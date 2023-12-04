@@ -3,6 +3,10 @@
 	
 	<mapper namespace="book">
 		
-		<select id=""></select>
+		<select id="getBooksInfo" resultType="BookDTO">
+			
+		
+		
+		</select>
 	
 	</mapper>
