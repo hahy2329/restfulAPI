@@ -5,8 +5,10 @@
 		
 		<select id="getBooksInfo" resultType="BookDTO">
 			
-		
-		
+			SELECT 
+				*		
+			FROM 
+				BOOK
 		</select>
 	
 	</mapper>
