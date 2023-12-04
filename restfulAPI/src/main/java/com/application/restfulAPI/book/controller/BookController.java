@@ -17,11 +17,13 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
-	@GetMapping("/show/books")
+	@GetMapping("/show/books") //책 관련 전체 조회
 	public List<BookDTO> books() throws Exception{
 		
 		return bookService.getBooksInfo();
 		
 	}
+	
+	
 	
 }
