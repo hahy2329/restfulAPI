@@ -20,4 +20,9 @@ public class BookServiceImpl implements BookService {
 		return bookDAO.getBooksInfo();
 	}
 
+	@Override
+	public BookDTO getBookIdInfo(long bookId) throws Exception {
+		return bookDAO.getBookIdInfo(bookId);
+	}
+
 }

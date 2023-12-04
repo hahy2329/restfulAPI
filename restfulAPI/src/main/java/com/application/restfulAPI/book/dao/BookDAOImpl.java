@@ -19,4 +19,10 @@ public class BookDAOImpl implements BookDAO {
 		
 		return sqlSession.selectList("book.getBooksInfo");
 	}
+
+	@Override
+	public BookDTO getBookIdInfo(long bookId) throws Exception {
+		return sqlSession.selectOne("book.getBookIdInfo", bookId);
+	}
+	
 }

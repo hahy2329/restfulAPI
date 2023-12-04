@@ -10,5 +10,16 @@
 			FROM 
 				BOOKS
 		</select>
+		
+		<select id="getBookIdInfo" parameterType="long" resultType="BookDTO">
+			
+			SELECT
+				*
+			FROM
+				BOOKS
+			WHERE
+				BOOK_ID = #{bookId}
+		
+		</select>
 	
 	</mapper>
