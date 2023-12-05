@@ -48,6 +48,12 @@ public class BookDAOImpl implements BookDAO {
 		
 	}
 
+	@Override
+	public void deleteBookIdInfo(long bookId) throws Exception {
+		sqlSession.delete("book.deleteBookIdInfo", bookId);
+		
+	}
+
 
 	
 }

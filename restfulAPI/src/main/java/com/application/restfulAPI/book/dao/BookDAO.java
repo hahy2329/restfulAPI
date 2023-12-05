@@ -12,6 +12,7 @@ public interface BookDAO {
 	public BookDTO getBooksNameInfo(BookDTO bookDTO) throws Exception;
 	public void updateBookInfo(BookDTO bookDTO) throws Exception;
 	public void updateBookName(BookDTO bookDTO) throws Exception;
+	public void deleteBookIdInfo(long bookId) throws Exception;
 	
 
 }

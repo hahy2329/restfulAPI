@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.application.restfulAPI.book.dto.BookDTO;
 import com.application.restfulAPI.book.service.BookService;
+import com.application.restfulAPI.response.dto.StatusCode;
 
 
 @RestController
@@ -26,14 +28,14 @@ public class BookController {
 	
 	
 	@GetMapping("/books") //전체 조회 : 책 관련 전체 조회
-	public List<BookDTO> books() throws Exception{
+	public List<BookDTO> booksGet() throws Exception{
 		
 		return bookService.getBooksInfo();
 		
 	}
 	
 	@GetMapping("/books/{bookId}") // 부분 조회 : 고유 ID를 통한 부분 조회 (PathVariable 사용)
-	public BookDTO books(@PathVariable long bookId) throws Exception{
+	public BookDTO booksGet(@PathVariable long bookId) throws Exception{
 		
 		BookDTO bookDTO = bookService.getBookIdInfo(bookId);
 		
@@ -42,7 +44,7 @@ public class BookController {
 	}
 	
 	@PostMapping("/books") //데이터 생성 : bookName, bookAuthor, bookPrice를 쿼리 스트링으로 입력 후 요청 시  bookDTO객체에 저장하여 DB저장 
-	public BookDTO books(@ModelAttribute BookDTO bookDTO) throws Exception{
+	public BookDTO booksPost(@ModelAttribute BookDTO bookDTO) throws Exception{
 		
 		bookService.insertBookInfo(bookDTO);
 		
@@ -51,7 +53,7 @@ public class BookController {
 	}
 	
 	@PutMapping("/books/{bookId}") //전체 수정 : 책의 고유 ID를 통한 해당 정보를 전체 수정한다.
-	public BookDTO books(@PathVariable long bookId, @ModelAttribute BookDTO bookDTO) throws Exception{
+	public BookDTO booksPut(@PathVariable long bookId, @ModelAttribute BookDTO bookDTO) throws Exception{
 		
 		bookDTO.setBookId(bookId);
 		
@@ -61,7 +63,7 @@ public class BookController {
 	}
 	
 	@PatchMapping("/books/{bookId}") //부분 수정 : 책의 고유 ID를 통해 책 이름을 수정한다.
-	public BookDTO books(@PathVariable long bookId, @RequestParam("bookName") String bookName) throws Exception{
+	public BookDTO booksPatch(@PathVariable long bookId, @RequestParam("bookName") String bookName) throws Exception{
 		
 		BookDTO bookDTO = new BookDTO();
 		bookDTO.setBookId(bookId);
@@ -70,6 +72,24 @@ public class BookController {
 		bookService.updateBookName(bookDTO);
 		
 		return bookService.getBookIdInfo(bookId); //DB에 수정이 제대로 이루어졌는지 확인을 위해 데이터를 전달해준다.
+	}
+	
+	@DeleteMapping("/books/{bookId}")
+	public int booksDelete(@PathVariable long bookId) throws Exception{
+		
+		if(bookService.getBookIdInfo(bookId) != null) {
+			
+			bookService.deleteBookIdInfo(bookId);
+			
+			return StatusCode.NO_CONTENT;
+			
+		}else {
+			
+			return StatusCode.NOT_FOUND;
+			
+		}
+		
+		
 	}
 	
 	

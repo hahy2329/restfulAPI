@@ -70,5 +70,16 @@
 				BOOK_ID = #{bookId}
 				
 		</update>
-	
+		
+		
+		<delete id="deleteBookIdInfo" parameterType="long">
+			
+			DELETE FROM BOOKS
+			
+			WHERE
+				BOOK_ID = #{bookId}
+		
+		
+		</delete>
+		
 	</mapper>

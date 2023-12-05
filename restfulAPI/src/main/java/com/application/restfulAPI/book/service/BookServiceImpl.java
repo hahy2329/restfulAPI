@@ -49,6 +49,12 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
+	@Override
+	public void deleteBookIdInfo(long bookId) throws Exception {
+		bookDAO.deleteBookIdInfo(bookId);
+		
+	}
+
 
 
 }
