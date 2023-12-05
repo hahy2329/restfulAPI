@@ -49,10 +49,6 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
-	@Override
-	public void updateBookAuthor(BookDTO bookDTO) throws Exception {
-		bookDAO.updateBookAuthor(bookDTO);
-		
-	}
+
 
 }

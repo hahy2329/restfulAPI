@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.application.restfulAPI.book.dto.BookDTO;
@@ -60,7 +61,7 @@ public class BookController {
 	}
 	
 	@PatchMapping("/books/{bookId}") //부분 수정 : 책의 고유 ID를 통해 책 이름을 수정한다.
-	public BookDTO books(@PathVariable long bookId, String bookName) throws Exception{
+	public BookDTO books(@PathVariable long bookId, @RequestParam("bookName") String bookName) throws Exception{
 		
 		BookDTO bookDTO = new BookDTO();
 		bookDTO.setBookId(bookId);
@@ -70,22 +71,6 @@ public class BookController {
 		
 		return bookService.getBookIdInfo(bookId); //DB에 수정이 제대로 이루어졌는지 확인을 위해 데이터를 전달해준다.
 	}
-	
-	@PatchMapping("/books/{bookId}") //부분 수정 : 책의 고유 ID를 통해 책 저자를 수정한다.
-	public BookDTO books(@PathVariable long bookId, String bookAuthor) throws Exception{
-		
-		BookDTO bookDTO = new BookDTO();
-		bookDTO.setBookId(bookId);
-		bookDTO.setBookAuthor(bookAuthor);
-		
-		bookService.updateBookAuthor(bookDTO);
-		
-		return bookService.getBookIdInfo(bookId);
-		
-	}
-	
-	
-	
 	
 	
 }

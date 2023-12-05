@@ -47,5 +47,7 @@ public class BookDAOImpl implements BookDAO {
 		sqlSession.update("book.updateBookName", bookDTO);
 		
 	}
+
+
 	
 }

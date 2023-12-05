@@ -61,13 +61,14 @@
 		</update>
 		
 		<update id="updateBookName" parameterType="BookDTO">
+		
 			UPDATE
 				BOOKS
 			SET
 				BOOK_NAME = #{bookName}
 			WHERE
 				BOOK_ID = #{bookId}
+				
 		</update>
-		
 	
 	</mapper>
