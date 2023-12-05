@@ -41,7 +41,7 @@ public class BookController {
 		
 	}
 	
-	@PostMapping("/books") //신규 도서 생성 : bookName, bookAuthor, bookPrice를 쿼리 스트링으로 입력 후 요청 시  bookDTO객체에 저장하여 DB저장 
+	@PostMapping("/books") //데이터 생성 : bookName, bookAuthor, bookPrice를 쿼리 스트링으로 입력 후 요청 시  bookDTO객체에 저장하여 DB저장 
 	public BookDTO books(@ModelAttribute BookDTO bookDTO) throws Exception{
 		
 		bookService.insertBookInfo(bookDTO);
