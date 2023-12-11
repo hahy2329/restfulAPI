@@ -51,7 +51,8 @@ public class BookController {
 		
 		bookService.insertBookInfo(bookDTO);
 		
-		return new ResponseEntity<BookDTO>(bookService.getBooksNameInfo(bookDTO), HttpStatus.OK); // DB에 저장이 되었는지 확인을 위해 사용자에게 해당 데이터를 전달해준다.
+		return new ResponseEntity<BookDTO>(bookService.getBooksNameInfo(bookDTO), HttpStatus.OK); 
+		// DB에 저장이 되었는지 확인을 위해 사용자에게 해당 데이터를 전달해준다.
 		
 	}
 	
@@ -62,7 +63,8 @@ public class BookController {
 		
 		bookService.updateBookInfo(bookDTO);
 		
-		return new ResponseEntity<BookDTO>(bookService.getBookIdInfo(bookId), HttpStatus.OK); //DB에 수정이 제대로 이루어졌는지 확인을 위해 데이터를 전달해준다.
+		return new ResponseEntity<BookDTO>(bookService.getBookIdInfo(bookId), HttpStatus.OK); 
+		//DB에 수정이 제대로 이루어졌는지 확인을 위해 데이터를 전달해준다.
 	}
 	
 	@PatchMapping("/books/{bookId}") //부분 수정 : 책의 고유 ID를 통해 책 이름을 수정한다.
@@ -74,7 +76,8 @@ public class BookController {
 		
 		bookService.updateBookName(bookDTO);
 		
-		return new ResponseEntity<BookDTO>(bookService.getBookIdInfo(bookId), HttpStatus.OK); //DB에 수정이 제대로 이루어졌는지 확인을 위해 데이터를 전달해준다.
+		return new ResponseEntity<BookDTO>(bookService.getBookIdInfo(bookId), HttpStatus.OK); 
+		//DB에 수정이 제대로 이루어졌는지 확인을 위해 데이터를 전달해준다.
 	}
 	
 	@DeleteMapping("/books/{bookId}")
